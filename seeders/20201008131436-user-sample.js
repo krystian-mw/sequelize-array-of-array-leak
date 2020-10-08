@@ -4,9 +4,9 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const randomString = () => Math.random().toString();
 
-    await queryInterface.bulkInsert(
-      "user",
-      [0, 1, 2, 3, 4].map((i) => ({
+    let arrs = [];
+    for (let index = 0; index < 100000; index++) {
+      arrs.push({
         username: `user_sample_${i}`,
         data: [
           [randomString(), randomString(), randomString()],
@@ -14,13 +14,52 @@ module.exports = {
           [randomString(), randomString(), randomString()],
           [randomString(), randomString(), randomString()],
           [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
+          [randomString(), randomString(), randomString()],
         ],
-      })),
-      {}
-    );
+        createdAt: new Date().toUTCString(),
+        updatedAt: new Date().toUTCString(),
+      });
+    }
+
+    await queryInterface.bulkInsert("sample_user", arrs, {});
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete("user", null, {});
+    await queryInterface.bulkDelete("sample_user", null, {});
   },
 };
