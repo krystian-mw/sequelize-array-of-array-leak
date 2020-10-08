@@ -2,4 +2,4 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: npm install && pg_start
+  - init: npm install | psql -c "CREATE ROLE root WITH LOGIN CREATEDB" && psql -c "CREATE DATABASE database_development"
