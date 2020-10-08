@@ -12,5 +12,5 @@ Run:
 
 ```bash
 npx sequelize db:migrate
-npx seqeulize db:seed:all
+npx sequelize db:seed:all
 ```
