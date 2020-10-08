@@ -4,59 +4,65 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     const randomString = () => Math.random().toString();
 
-    let arrs = [];
     for (let index = 0; index < 100000; index++) {
-      arrs.push({
-        username: `user_sample_${index}`,
-        data: [
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
-          [randomString(), randomString(), randomString()],
+      console.clear();
+      console.log("Uploading", index, "of", 100000);
+      console.log("Progress:", `${(index / 100000) * 100}%`);
+      await queryInterface.bulkInsert(
+        "sample_user",
+        [
+          {
+            username: `user_sample_${index}`,
+            data: [
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+              [randomString(), randomString(), randomString()],
+            ],
+            createdAt: new Date().toUTCString(),
+            updatedAt: new Date().toUTCString(),
+          },
         ],
-        createdAt: new Date().toUTCString(),
-        updatedAt: new Date().toUTCString(),
-      });
+        {}
+      );
     }
-
-    await queryInterface.bulkInsert("sample_user", arrs, {});
   },
 
   down: async (queryInterface, Sequelize) => {
