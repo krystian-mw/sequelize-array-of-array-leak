@@ -7,7 +7,7 @@ module.exports = {
     let arrs = [];
     for (let index = 0; index < 100000; index++) {
       arrs.push({
-        username: `user_sample_${i}`,
+        username: `user_sample_${index}`,
         data: [
           [randomString(), randomString(), randomString()],
           [randomString(), randomString(), randomString()],
